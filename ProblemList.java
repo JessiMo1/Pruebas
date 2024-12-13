@@ -1,59 +1,68 @@
 public class ProblemList {
+    // Se reprensenta un nodo 
+    public static class ListaNodo {
+        int val;
+        ListaNodo next;
 
-    public ListNode nuevo(int val) {
-      ListNode nodo = new ListNode(val); //Crea un valor 
-      return nodo; //retorna el nodo que se creo 
-  }
+        ListaNodo(int val) {
+            this.val = val;
+        }
+    }
 
-  public ListNode insertar(ListNode lista, int val) {
-      ListNode newListNode = nuevo(val); //crea un nuevo nodo 
+    // Método para sumar la lista
+    public static ListaNodo addTwoNumbers(ListaNodo l1, ListaNodo l2) {
+        ListaNodo temporal = new ListaNodo(0); // Nodo temporal para construir la lista
+        ListaNodo actual = temporal;
+        int a = 0; 
 
-      if (lista == null) { //Si la  lista esta vacia, el nodo se converte en el primero 
-          lista = newListNode;
-      } else {
-          ListNode actual = lista;
-          while (actual.next != null) {
-              actual = actual.next;
-          }
-          actual.next = newListNode;//Enlazamos el nuevo nodo
-      }
+        while (l1 != null || l2 != null || a != 0) {
+            int suma = a;
 
-      return lista;// Se devolvera la lista actualizada
-  }
-  public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-      ListNode temporal = null; 
-      int a = 0;
+            // Suma el valor del nodo de l1 si no es nulo
+            if (l1 != null) {
+                suma += l1.val;
+                l1 = l1.next;
+            }
 
-      // bucle que hara recorrido a ambas listas mientras haya elementos 
-      while (l1 != null || l2 != null) {
-          int sum = a;
+            
+            if (l2 != null) {
+                suma += l2.val;
+                l2 = l2.next;
+            }
 
-          
-          if (l1 != null) {
-              sum += l1.val;
-              l1 = l1.next;
-          }
+            a = suma / 10; 
+            actual.next = new ListaNodo(suma % 10); // Crear un nuevo nodo 
+            actual = actual.next; // Avanza al siguiente nodo
+        }
 
-          
-          if (l2 != null) {
-              sum += l2.val;
-              l2 = l2.next;
-          }
+        return temporal.next; // Retornar la lista enlazada 
+    }
 
-          
-          a = sum / 10;
+    // Método para imprimir una lista enlazada
+    public static void printList(ListaNodo nodo) {
+        while (nodo != null) {
+            System.out.print(nodo.val + " "); // Imprime el valor del nodo 
+            nodo = nodo.next;
+        }
+        System.out.println(); 
+    }
 
-         
-          temporal = insertar(temporal, sum % 10);
-      }
+    public static void main(String[] args) {
+    
+        ListaNodo l1 = new ListaNodo(2);
+        l1.next = new ListaNodo(4);
+        l1.next.next = new ListaNodo(3);
 
-        if (a > 0) {
-          temporal = insertar(temporal, a);
-      }
+       
+        ListaNodo l2 = new ListaNodo(5);
+        l2.next = new ListaNodo(6);
+        l2.next.next = new ListaNodo(4);
 
-      return temporal;
-  }
+        // Suma las dos listas
+        ListaNodo resultado = addTwoNumbers(l1, l2);
 
-      
-
+        // Imprime el resultado
+        System.out.print("El resultado es: ");
+        printList(resultado); 
+    }
 }
