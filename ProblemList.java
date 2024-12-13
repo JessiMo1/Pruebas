@@ -47,17 +47,24 @@ public class ProblemList {
         System.out.println(); 
     }
 
+    public static ListaNodo construcionLista(int[] datos) {
+        ListaNodo temporal = new ListaNodo(0);
+        ListaNodo actual = temporal;
+        for (int val : datos) {
+            actual.next = new ListaNodo(val);
+            actual = actual.next;
+        }
+        return temporal.next;
+    }
+
     public static void main(String[] args) {
-    
-        ListaNodo l1 = new ListaNodo(0);
-        l1.next = new ListaNodo(0);
-        l1.next.next = new ListaNodo(0);
 
-       
-        ListaNodo l2 = new ListaNodo(0);
-        l2.next = new ListaNodo(0);
-        l2.next.next = new ListaNodo(0);
+        //Se creara una lista enlazada desde un arreglo
+        int [] datos1 ={9,9,9,9,9,9,9};
+        int [] datos2 ={9,9,9,9};
 
+        ListaNodo l1 = construcionLista(datos1);
+        ListaNodo l2 = construcionLista(datos2);
         // Suma las dos listas
         ListaNodo resultado = addTwoNumbers(l1, l2);
 
