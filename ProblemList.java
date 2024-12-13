@@ -49,14 +49,14 @@ public class ProblemList {
 
     public static void main(String[] args) {
     
-        ListaNodo l1 = new ListaNodo(2);
-        l1.next = new ListaNodo(4);
-        l1.next.next = new ListaNodo(3);
+        ListaNodo l1 = new ListaNodo(0);
+        l1.next = new ListaNodo(0);
+        l1.next.next = new ListaNodo(0);
 
        
-        ListaNodo l2 = new ListaNodo(5);
-        l2.next = new ListaNodo(6);
-        l2.next.next = new ListaNodo(4);
+        ListaNodo l2 = new ListaNodo(0);
+        l2.next = new ListaNodo(0);
+        l2.next.next = new ListaNodo(0);
 
         // Suma las dos listas
         ListaNodo resultado = addTwoNumbers(l1, l2);
