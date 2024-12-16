@@ -1,14 +1,27 @@
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 public class Busqueda {
-    public int removeElement(int[] nums, int val) {
-        int a = 0; //variable para almacenar 
+    public static void main(String[] args) {
+        String elementos, needle;
+        //Pedira la palabra que queremos 
+        elementos = JOptionPane.showInputDialog( "Ingresa la palabra ");
+    
+        //pedira la palabra que queremos que busque
+        needle = JOptionPane.showInputDialog( "Ingresa la palabra ");
+     
+        //Busca la palabra 
+        int a = elementos.indexOf(needle);
 
-        for (int h = 0; h < nums.length; h++) { 
-            if (nums[h] != val) {
-                nums[a] = nums[h]; //movera los elementos
-                a++;
-            }
+        //Mostrara el resultado 
+        if(a !=-1){
+            JOptionPane.showMessageDialog(null, "Palabra encontrada: " + a ,
+                    "Resultado", JOptionPane.INFORMATION_MESSAGE);
         }
-
-        return a; //retorna el tamaño 
+        else {
+            JOptionPane.showMessageDialog(null, "La palabra no está: " + a, 
+                    "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
     }
+    
 }
